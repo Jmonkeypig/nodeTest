@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title><%= title %></title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <% include ./header.ejs %>
+  </head>
+  <body>
+    <h1>ejs Exam!</h1>
+    <ul>
+        <% for(var i=0; i<length; i++){ %>
+            <li>
+                <%= "example loop " + i %>
+            </li>
+        <% } %>
+    </ul>
+    <a><%= time %></a>
+  </body>
+</html>
