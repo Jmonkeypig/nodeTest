@@ -1,9 +1,8 @@
 var express = require('express');
 var fs = require("fs");
-
 var app = express();
-
-
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }))
 //ejs setting
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -12,7 +11,10 @@ app.engine('html', require('ejs').renderFile);
 //public 이라는 디렉토리에 파일을 넣으면 정적인 데이터를 불러올 수 있다
 app.use(express.static('public'));
 app.get('/', function(req, res){
-    res.send('Hello home page');
+  res.render('login', {
+            title: "Login",
+            length: 5
+  });
 });
 app.get('/route', function(req, res){
     res.send('Hello Jake, <img src="/Jakesalad.png">')
@@ -35,3 +37,4 @@ app.listen(3000, function(){
 
 var router = require('./js/ejsexam')(app, fs);
 var router2 = require('./js/topic')(app, fs);
+var router3 = require('./js/login')(app, fs);

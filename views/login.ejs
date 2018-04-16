@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <% include ./header.ejs %>
+
+  </head>
+  <body class='container theme-showcase'>
+    <div>
+    <h1>Login</h1>
+      <form action="/auth/login" method="post" class="form-signin">
+        <div>
+          <input type="text" id="inputEmail" name="username"  class="form-control" placeholder="username" required="" autofocus="">
+        </div>
+        <div>
+          <input type="password" id="inputEmail" name="password"  class="form-control" placeholder="password" required="" autofocus="">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <p>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">login</button>
+          <button type="submit" class="btn btn-lg btn-info btn-block">register</button>
+          <button class='btn btn-lg btn-danger btn-block' id='aTag'>jquery test touch</button>
+        </p>
+      </form>
+
+    </div>
+  </body>
+</html>
+
+
+
+<script>
+
+  var testBool = true;
+  $("#aTag").click(function() {
+    if(testBool){
+      var htmlString = $( this ).html();
+      $( this ).text("query Test1" );
+    }else{
+      var htmlString = $( this ).html();
+      $( this ).text("query Test2" );
+    }
+    testBool = !testBool;
+
+  });
+
+</script>
