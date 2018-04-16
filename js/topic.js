@@ -1,7 +1,7 @@
 module.exports = function(app, fs, conn)
 {
      app.get('/topic/:id',function(req,res){
-       var sql = 'SELECT id, title, description FROM topic';
+       var sql = 'SELECT id, title, author, description FROM topic';
        conn.query(sql, function(err, rows, fields){
          if(err){
            console.log(err);
@@ -15,7 +15,7 @@ module.exports = function(app, fs, conn)
                time : Date(),
                topics : rows,
                description : rows[id].description,
-               id : id
+               id : id,
            })
          }
        });

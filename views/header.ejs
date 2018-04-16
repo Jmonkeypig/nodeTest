@@ -29,11 +29,11 @@
           </button>
           <a class="navbar-brand" href="/">NodeJs</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div id="menu" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/topic/0">Topic</a></li>
-            <li><a href="/app">About</a></li>
+            <li class="" ><a href="/" id ="home">Home</a></li>
+            <li ><a href="/topic/0" id ="topic">Topic</a></li>
+            <li ><a href="/app" id ="about">About</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -41,7 +41,7 @@
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
+                <li class="dropdown-header">My info</li>
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
@@ -52,7 +52,10 @@
     </nav>
 
 <script>
-  console.log("Header");
+  $('#menu > ul.nav li a').click(function(e) {
+    var $this = $(this);
+    $this.parent().siblings().removeClass('active').end().addClass('active');
 
+  });
 
 </script>

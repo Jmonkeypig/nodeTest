@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title></title>
+  <title>nodejs</title>
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <% include ./header.ejs %>
   </head>
   <body class='container theme-showcase'>
-    <h1>query string Exam</h1>
+    <h1>QueryString, Dababase</h1>
     <!-- <a href="/topic/0">JavaScript</a><br>
     <a href="/topic/1">Nodejs</a><br>
     <a href="/topic/2">Express</a><br><br> -->
 
-    <ul>
+    <div class="list-group">
         <% for(var i=0; i<topics.length; i++){ %>
-          <li>
-            <a href="/topic/<%=i%>">
-                <%= topics[i].title %><br>
+            <a href="/topic/<%=i%>" class="list-group-item" id="atag<%= i %>">
+                <%= topics[i].id %> : <%= topics[i].title %>  / author :  <%= topics[i].author %><br>
             </a>
-          </li>
         <% } %>
-    </ul>
+    </div>
+    <h2>Description</h2>
     <p><%= description %></p>
     <a href="/add">add</a>
     <a href="/edit">edit</a>
-    <a href="/topic/<%=id%>/delete">delete<a>
+    <a href="/topic/<%=topics[id].id%>/delete">delete<a>
   </body>
 </html>
 
 
 
 <script>
+  //header active
+  $('#topic').parent().siblings().removeClass('active').end().addClass('active');
+  $('#atag' + <%= id%>).addClass('active');
+
+
+
 // $("#aTag").click(function() {
 //
 //   if(testBool){

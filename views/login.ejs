@@ -26,13 +26,15 @@
         </p>
       </form>
       <button class="btn btn-lg btn-info btn-block">register</button>
-      <button class='btn btn-lg btn-danger btn-block' id='aTag'>jquery test touch</button>
+
     </div>
   </body>
 </html>
 
 
 <script>
+  //header active
+  $('#home').parent().siblings().removeClass('active').end().addClass('active');
 
   $('#frm').validetta({
         validators: {
