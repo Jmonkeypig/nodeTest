@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title></title>
+
+  <title>Node Login</title>
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <% include ./header.ejs %>
-
   </head>
   <body class='container theme-showcase'>
     <div>
     <h1>Login</h1>
-      <form action="/auth/login" method="post" class="form-signin">
+      <form id="frm" action="/auth/login" method="post" class="form-signin">
         <div>
-          <input type="text" id="inputEmail" name="username"  class="form-control" placeholder="username" required="" autofocus="">
+          <input type="text" data-validetta="required,regExp[onlyEngNnumber]" data-vd-message-required="아이디를 입력해주세요." id="inputEmail" name="username"  class="form-control" placeholder="username" required="" autofocus="">
         </div>
         <div>
-          <input type="password" id="inputEmail" name="password"  class="form-control" placeholder="password" required="" autofocus="">
+          <input type="password" name="password"  data-validetta="required,minLength[4]"  data-vd-message-required="비밀번호를 입력해주세요." class="form-control" placeholder="password" required="" autofocus="">
         </div>
         <div class="checkbox">
           <label>
@@ -23,18 +23,41 @@
         </div>
         <p>
           <button type="submit" class="btn btn-lg btn-primary btn-block">login</button>
-          <button type="submit" class="btn btn-lg btn-info btn-block">register</button>
-          <button class='btn btn-lg btn-danger btn-block' id='aTag'>jquery test touch</button>
         </p>
       </form>
-
+      <button class="btn btn-lg btn-info btn-block">register</button>
+      <button class='btn btn-lg btn-danger btn-block' id='aTag'>jquery test touch</button>
     </div>
   </body>
 </html>
 
 
-
 <script>
+
+  $('#frm').validetta({
+        validators: {
+            regExp: {
+                onlyEngNnumber : {
+                    pattern : /^[A-Za-z0-9+]*$/i,
+                    errorMessage : 'Only English or numbers can be entered.'
+                },
+            }
+        },
+        realTime : true,
+        display : 'inline',
+        bubblePosition: 'bottom',
+        onValid : function( event ) {
+            // event.preventDefault(); // Will prevent the submission of the form
+            // goLogin();
+        }
+
+    },
+    {
+        required  : 'Please enter your login information.',
+        minLength: 'You must enter at least {count} digits.'
+    });
+
+
 
   var testBool = true;
   $("#aTag").click(function() {

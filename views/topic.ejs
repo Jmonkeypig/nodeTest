@@ -7,10 +7,23 @@
   </head>
   <body class='container theme-showcase'>
     <h1>query string Exam</h1>
-    <a href="/topic/0">JavaScript</a><br>
+    <!-- <a href="/topic/0">JavaScript</a><br>
     <a href="/topic/1">Nodejs</a><br>
-    <a href="/topic/2">Express</a><br><br>
-    <a><%= topics %></a>
+    <a href="/topic/2">Express</a><br><br> -->
+
+    <ul>
+        <% for(var i=0; i<topics.length; i++){ %>
+          <li>
+            <a href="/topic/<%=i%>">
+                <%= topics[i].title %><br>
+            </a>
+          </li>
+        <% } %>
+    </ul>
+    <p><%= description %></p>
+    <a href="/add">add</a>
+    <a href="/edit">edit</a>
+    <a href="/topic/<%=id%>/delete">delete<a>
   </body>
 </html>
 

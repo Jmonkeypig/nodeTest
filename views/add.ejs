@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <title>Add</title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <% include ./header.ejs %>
+  </head>
+  <body class='container theme-showcase'>
+    <div>
+    <h1>Add</h1>
+      <form id="frm" action="/add" method="post" class="form-signin">
+        <div>
+          <input type="text" data-validetta="required,regExp[onlyEngNnumber]" data-vd-message-required="제목을 입력해주세요." id="inputEmail" name="title"  class="form-control" placeholder="title" required="" autofocus="">
+          <input type="text" data-vd-message-required="아이디를 입력해주세요." name="author"  class="form-control" placeholder="username" required="" autofocus="">
+        </div>
+        <div>
+          <textarea type="text" name="description"  data-validetta="required,minLength[4]"  data-vd-message-required="글자를 입력해주세요." class="form-control" placeholder="" required="description" autofocus=""></textarea>
+        </div>
+        <p>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
+
+
+<script>
+
+  $('#frm').validetta({
+        validators: {
+            regExp: {
+                onlyEngNnumber : {
+                    pattern : /^[A-Za-z0-9+]*$/i,
+                    errorMessage : 'Only English or numbers can be entered.'
+                },
+            }
+        },
+        realTime : true,
+        display : 'inline',
+        bubblePosition: 'bottom',
+        onValid : function( event ) {
+            // event.preventDefault(); // Will prevent the submission of the form
+            // goLogin();
+        }
+
+    },
+    {
+        required  : 'Please enter your login information.',
+        minLength: 'You must enter at least {count} digits.'
+    });
+
+
+
+
+</script>

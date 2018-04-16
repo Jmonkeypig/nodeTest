@@ -2,6 +2,16 @@ var express = require('express');
 var fs = require("fs");
 var app = express();
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
+var conn = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123456',
+  database : 'o2'
+});
+
+conn.connect();
+
 app.use(bodyParser.urlencoded({ extended: false }))
 //ejs setting
 app.set('views', __dirname + '/views');
@@ -36,5 +46,5 @@ app.listen(3000, function(){
 });
 
 var router = require('./js/ejsexam')(app, fs);
-var router2 = require('./js/topic')(app, fs);
+var router2 = require('./js/topic')(app, fs, conn);
 var router3 = require('./js/login')(app, fs);
